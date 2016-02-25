@@ -1,0 +1,8 @@
+[run]
+source = django-threejs
+omit =
+    */migrations/*
+    */tests/*
+    django-threejs/manage.py
+    django-threejs/threejs/wsgi.py
+    django-threejs/threejs/settings/production.py

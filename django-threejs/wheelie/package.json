@@ -1,13 +1,18 @@
 {
-  "name": "Wheelie",
+  "name": "threejs-prototype",
   "version": "0.0.0",
-  "description": "Django Wheelie",
-  "main": "gulpfile.js",
+  "description": "A generic prototype, made with Three.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "Emanuele Palazzetti",
+  "contributors": [
+    "Federico Frenguelli"
+  ],
+  "license": "BSD-2-Clause",
   "devDependencies": {
-    "gulp": "3.9.0",
+    "gulp": "3.9.1",
     "wheelie": "0.1.3",
     "wheelie-recipe": "0.2.1"
   }

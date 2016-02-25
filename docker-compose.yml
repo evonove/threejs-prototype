@@ -1,0 +1,15 @@
+# This file MUST be used only for development purposes
+
+db:
+  image: library/postgres:9.5.1
+  ports:
+    - "5432:5432"
+  environment:
+    - POSTGRES_USER=devel
+    - POSTGRES_PASSWORD=123456
+    - POSTGRES_DB=threejs
+
+redis:
+  image: library/redis:3.0.7
+  ports:
+    - "6379:6379"

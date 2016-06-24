@@ -19,6 +19,7 @@
   ],
   "dependencies": {
     "normalize-css": "normalize.css#3.0.3",
-    "three.js": "threejs#r74"
+    "three.js": "threejs#r78",
+    "threex.terrain": "*"
   }
 }

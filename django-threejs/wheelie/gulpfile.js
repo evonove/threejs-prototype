@@ -8,7 +8,8 @@ wheelie.setDefault('watch');
 // build customizations
 var vendors = [
     // put here your vendors installed via bower (or whatever), available in `vendors/` folder
-    'three.js/build/three.min.js'
+    'three.js/build/three.min.js',
+    'three.js/examples/js/SimplexNoise.js',
 ];
 
 var scripts = [

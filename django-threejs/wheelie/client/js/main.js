@@ -12,7 +12,7 @@
     // set up lights
     var light = new THREE.AmbientLight( 0x404040 ); // soft white light
     scene.add( light );
-    scene.fog = new THREE.Fog(0x000, 0, 20);
+    scene.fog = new THREE.Fog(0x000, 0, 10);
 
     // generate plane
     var geometry = generateSimplexPlaneGeometry();
@@ -35,29 +35,44 @@
     scene.add( directionalLight );
 
     plane.scale.x = 6.0;
+    plane.scale.z = 6.0;
+    plane.scale.multiplyScalar(2);
+
+    //plane.scale.y = 3.0;
+    //plane.scale.z = 10;
 
     camera.position.z = 5;
-    camera.position.y = 1;
+    camera.position.y = 2;
 
 
     var step = 0.001;
     render();
 
     function generateSimplexPlaneGeometry() {
-        var geometry = new THREE.PlaneGeometry( 1, 1, 64, 64 );
+        var width = 100;
+        var height = 100;
+        var geometry = new THREE.PlaneGeometry( 1, 1, width-1, height-1 );
         geometry.lookAt( new THREE.Vector3(0, 1, 0) );
 
         var simplex = new SimplexNoise();
-        for( var i = 0; i < geometry.vertices.length; i++) {
-            var v = geometry.vertices[i];
+        for( var i = 0; i < width; i++) {
+            for( var j = 0; j < height; j++) {
 
-            // generate noise
-            var n = simplex.noise(v.x, v.z);
-            // from here
+                // generate noise
+                var n = 0;
+                var level = 3;
+                n += (simplex.noise(i/level, j/level)/2 + 0.5) * 0.125;
+                level *= 3;
+                n += (simplex.noise(i/level, j/level)/2 + 0.5) * 0.25;
+                level *= 2;
+                n += (simplex.noise(i/level, j/level)/2 + 0.5) * 0.5;
+                level *= 2;
+                n += (simplex.noise(i/level, j/level)/2 + 0.5) * 1;
+                n /= 1+0.5+0.25+0.125;
 
-            // to here
-
-            v.y = n;
+                var v = geometry.vertices[i * width + j];
+                v.y = n;
+            }
         }
 
         return geometry;

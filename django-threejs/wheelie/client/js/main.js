@@ -38,19 +38,15 @@
     plane.scale.z = 6.0;
     plane.scale.multiplyScalar(2);
 
-    //plane.scale.y = 3.0;
-    //plane.scale.z = 10;
-
-    camera.position.z = 5;
+    camera.position.z = 7;
     camera.position.y = 2;
-
 
     var step = 0.001;
     render();
 
     function generateSimplexPlaneGeometry() {
-        var width = 100;
-        var height = 100;
+        var width = 128;
+        var height = 128;
         var geometry = new THREE.PlaneGeometry( 1, 1, width-1, height-1 );
         geometry.lookAt( new THREE.Vector3(0, 1, 0) );
 

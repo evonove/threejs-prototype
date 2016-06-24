@@ -24,7 +24,6 @@
     for(var i = 0; i < morphGeometry.vertices.length; i++) {
         vertices.push(morphGeometry.vertices[i].clone());
     }
-    console.log("vertices lenght: " + vertices.length + " - " + plane.geometry.vertices.length);
     geometry.morphTargets.push({ name: "targetFoo", vertices: vertices });
     plane.updateMorphTargets();
 
@@ -40,6 +39,13 @@
 
     camera.position.z = 7;
     camera.position.y = 2;
+
+    var foo = { value: 0.0 };
+    var tween = new TWEEN.Tween(foo).to({ value: 1.0 }, 2000);
+    tween.onUpdate(function() {
+        console.log("tweener " + this);
+    });
+    tween.start();
 
     var step = 0.001;
     render();
@@ -74,20 +80,18 @@
         return geometry;
     }
 
-    function render() {
+    function render(time) {
         requestAnimationFrame( render );
+        TWEEN.udpate(time);
 
         var current = plane.morphTargetInfluences[0];
-        console.log("current morph influence " + current);
-        console.log("morph", plane.geometry.morphTargets[0].name);
-
         if (current > 1.0) {
             step = -0.001;
         } else if (current <= 0.0) {
             step = 0.001;
         }
 
-        plane.morphTargetInfluences[0] += step
+        plane.morphTargetInfluences[0] += step;
 
         renderer.render(scene, camera);
     }

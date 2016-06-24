@@ -20,6 +20,6 @@
   "dependencies": {
     "normalize-css": "normalize.css#3.0.3",
     "three.js": "threejs#r78",
-    "threex.terrain": "*"
+    "tween.js": "tweenjs#^16.3.4"
   }
 }
